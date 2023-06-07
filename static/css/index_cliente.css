@@ -1,0 +1,47 @@
+.tamaño{
+    max-width: 100% ;
+    height: auto;
+
+}
+
+.negro{
+    color: black;
+}
+
+/* .breadcrumb{
+
+} */
+
+/* Style the list */
+.breadcrumb {
+    padding: 4px 7px 5px 10px;
+    list-style: none;
+    background-color: rgb(226, 221, 221) ;
+    background-size: 1%;
+    background-position-x: left 3px;
+    font-size: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 6px;
+    color: rgb(58, 2, 2);
+    margin: 13px 200px;
+    content: "/\00a0";
+  }
+  
+.amarillo{
+
+color: #d49e09
+}
+
+
+
+.azul{
+
+    color: #0f0438
+    }
+
+
+.rojo{
+
+        color: #440208
+     }

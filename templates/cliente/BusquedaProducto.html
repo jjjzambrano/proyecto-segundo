@@ -1,0 +1,75 @@
+<center>
+<div>
+{{mensaje}}
+</div>
+<div>
+{% for i in respuesta %}
+<div>
+{{i[2]}}
+</div>
+
+<div>
+<img class= "img-thumbnail" width= "200px" src="/static/images/{{i[5]}}"> </img>
+</div>
+<div>
+{{i[3]}}
+</div>
+<div>
+ <button type="button" class="btn btn-primary botonlimpieza"  data-id="{{i[0]}}">
+           Click para reservar
+           </button> 
+</div>
+{% endfor %}
+</div>
+</center>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+                $('.botonlimpieza').click(function(){
+                    var userid = $(this).data('id');
+                    $.ajax({
+                        url: '/ajaxlimpieza',
+                        type: 'post',
+                        data: {userid: userid},
+                        success: function(data){ 
+                           
+                            $('.modal-body').html(data);
+                            $('.modal-body').append(data.respuesta);
+                            $('#exampleModal').modal('show');
+
+                        }
+                    });
+                });
+function ajaxBuscarP(){
+                    $.ajax({
+                        url: '/ajaxBuscarP',
+                        data: $('form').serialize(),
+                        type: 'POST',
+                        success: function(data){
+                            // console.log(data);
+                            $('.CuerpoEncontrado').html(data);
+                            $('.CuerpoEncontrado').append(data.htmlresponse);
+                            //$('#empModal2').modal('show');
+
+
+                        },
+                        error: function(error){
+                            console.log(error);
+                        }
+                    });
+                };
+
+                $('#formBusqueda').submit(function(event){
+                    event.preventDefault();
+                    $('.Ocultar').hide();
+                    $('.mostrar').show();
+                    $('.Navegacionindex').hide();
+                    ajaxBuscarP();
+                });
+                
+
+
+                           });
+
+</script>

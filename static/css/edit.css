@@ -1,0 +1,14 @@
+.negro{
+    width: 25 text-align left; vertical-align: top;border: 1px solid #000;
+}
+
+.blanco{
+    width: 25 text-align left; vertical-align: top;border: 1px solid rgb(235, 225, 225);
+}
+
+body{
+    background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #070707, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #0d0d0e, #070707); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

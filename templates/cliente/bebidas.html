@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% block estilos %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="../../static/css/index_cliente.css">
+  
+<style>
+ body {
+        background-color: #eaeded;
+    }
+.producto{
+   margin: 20px;
+   }
+.producto1{
+  background-color: #eaeded;
+}
+</style>
+ {% endblock %}
+
+{% block busqueda %}
+<form class="d-flex" id="formBusqueda">
+              <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            </form>
+             
+{% endblock %}
+
+
+{% block content %}
+<div class= "ProductoEncontrado">
+
+ <div class= "CuerpoEncontrado">
+  </div> 
+</div>
+
+<br>
+<div class = "container">
+  <center>
+  <div id="ExampleControls" class="slide" data-bs-ride="">
+      <div class="inner">
+        <div class="item active">
+          <img src="/static/images/Publicidad.png" class="d-block w-100" alt="...">
+        </div>
+      </div>
+  </center>
+
+</div>
+<br>
+<div class="border">
+<div class="row">
+  <div class="col">
+  <table class="table table-bordered table-hover table-secondary">
+  <tr><td class="bg-success"><a class="nav-link text-white" href="">Categorias</a></td></tr>
+  <tr><td><a class="nav-link text-dark"  href="/cliente/limpieza">Productos de Limpieza</a></td></tr>
+  <tr><td><a class="nav-link text-dark" href="/cliente/bebidas">Bebidas y Lacteos</a></td></tr>
+  <tr><td><a class="nav-link text-dark" href="/cliente/carnes">Carnes</a></td></tr>
+  <tr><td><a class="nav-link text-dark" href="/cliente/vegetales">Vegetales</a></td></tr>
+  </table>
+  </div>
+  <div class="col col-9">
+<div class="container"> 
+  <div class="contec">
+    <div class="row">
+      {% for p in bebidas %}
+      
+        <div class="col col-3 producto">
+          <div class= "container border producto1 border-dark">
+          <center>
+           <div class "nombre"> <p class="text-center text-secondary text-end fw-bold">{{p[2]}}</p> </div>
+           <div class "foto">  <img class= "img-thumbnail" width= "200px" src="/static/images/{{p[5]}}"> </img> </div>
+           <div class "precio"> ${{p[3]}} </div>
+           <div class "boton">  
+           <button type="button" class="btn btn-primary botonlimpieza"  data-id="{{p[0]}}">
+           Click para reservar
+           </button> 
+            <!-- Modal -->
+           </div>
+          </cente>
+          </div>
+      
+       </div>
+       <br>
+                  
+                  
+      {% endfor %}
+
+    </div>
+  </div>
+ </div>
+</div>
+
+  </div>
+</div>
+ 
+<div class="modal fade btn btn-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                  <div class="modal-content ">
+                    <div class="modal-header btn btn-dark">
+                      <h5 class="modal-title " id="exampleModalLabel">INGRESE LOS DATOS PARA RESERVAR</h5>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body btn btn-warning">
+                      
+                      <!-- aqui termina para mandar a la base de datos -->
+                    </div>
+                  </div>
+                </div>
+</div>
+              
+<script type="text/javascript">
+
+  $(document).ready(function(){
+                $('.botonlimpieza').click(function(){
+                    var userid = $(this).data('id');
+                    $.ajax({
+                        url: '/ajaxlimpieza',
+                        type: 'post',
+                        data: {userid: userid},
+                        success: function(data){ 
+                           
+                            $('.modal-body').html(data);
+                            $('.modal-body').append(data.respuesta);
+                            $('#exampleModal').modal('show');
+
+                        }
+                    });
+                });
+function ajaxBuscarP(){
+                    $.ajax({
+                        url: '/ajaxBuscarP',
+                        data: $('form').serialize(),
+                        type: 'POST',
+                        success: function(data){
+                            // console.log(data);
+                            $('.CuerpoEncontrado').html(data);
+                            $('.CuerpoEncontrado').append(data.htmlresponse);
+                            //$('#empModal2').modal('show');
+
+
+                        },
+                        error: function(error){
+                            console.log(error);
+                        }
+                    });
+                };
+
+                $('#formBusqueda').submit(function(event){
+                    event.preventDefault();
+                    $('.Ocultar').hide();
+                    $('.mostrar').show();
+                    $('.Navegacionindex').hide();
+                    ajaxBuscarP();
+                });
+                
+
+
+                           });
+
+</script>
+  
+  
+              
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+
+{% endblock %}
+
+
+
+    
+    

@@ -1,0 +1,113 @@
+
+<center>
+
+    <div>
+        {{mensaje}}
+    </div>
+
+    <div class="container">
+
+        <table class="table table-sm table-bordered table-hover ">
+            
+            <tr class="bg-success text-light">
+                <!-- El id no tiene que ser visible el rol y la contrasenia tampoco -->
+                <!-- <th>#ID </th> -->
+                <!-- <th>#ID ROL</th> -->
+                <th class="bg-primary">#Nombre</th>
+                <th>#Direccion</th>
+                <th>#Telefono</th>
+                <th>#Email</th>
+                <th>Compras</th>
+                <th></th>
+
+            </tr>
+            <tbody>
+            {% for i in consulta %}
+            <tr>
+                
+                <td class="fw-bold">{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+                <td>{{i[4]}}</td>
+                <td>{{i[5]}}</td>
+                <td>
+                    <button type="button" class="userinfo btn btn-primary" data-id='{{i[0]}}' >
+                        Ver
+                      </button>
+                </td>
+                <td>
+                    <button type="button" class="userEliminar btn btn-danger" data-id="{{i[0]}}"> x</button>
+                </td>
+                
+                </tr>
+                {% endfor %}
+            
+            </tbody>
+    </table>
+    </div>
+
+
+
+
+</center>
+
+
+
+ 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+                    $('.userinfo').click(function(){
+                        var userid = $(this).data('id');
+                        $.ajax({
+                            url: '/ajaxfile',
+                            type: 'post',
+                            data: {userid: userid},
+                            success: function(data){ 
+                               
+                                $('.modal-body').html(data);
+                                $('.modal-body').append(data.htmlresponse);
+                                // $('#empModal').modal('show');
+    
+                            }
+                        });
+                    });
+    
+                    
+    
+    
+                    $('.userEliminar').click(function(){
+                        var userid = $(this).data('id');
+                        $.ajax({
+                            url: '/ajaxElim',
+                            type: 'post',
+                            data: {userid: userid},
+                            success: function(data){ 
+                               
+                                $('.modal-body').html(data);
+                                $('.modal-body').append(data.htmlresponse);
+                                // $('#empModal1').modal('show');
+    
+                            }
+                        });
+                    });
+                    
+                    
+    
+                    
+    
+                    
+    
+    
+                    
+    
+                //     // $('.buscar').click(function(){
+                //     //     $('.busqueda').show();
+                //     //     $('.lista').hide();
+                //     // });
+    
+                });
+    
+    </script>
+
+
+

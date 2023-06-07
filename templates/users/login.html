@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MADJS</title>
+	<link rel="stylesheet" href="../../static/css/login.css">
+</head>
+
+
+
+<body>
+
+	<div class="container">
+		<div class="frame">
+			<div class="nav">
+				<ul class"links">
+					
+					<center class="color">
+						<h1   style="color:seashell;">MADJS</h1>
+					</center>
+					<li class="signin-active"><a class="btn">login</a></li>
+					<li class="signup-inactive"><a class="btn" href="/users/registrar">registrar </a></li>
+				</ul>
+			</div> 
+			<br>
+			<div>
+				<form action="/users/login_admin" method="POST">
+					<br>
+					<br>
+					<br>
+					<br>
+					<label for="username">Username</label>
+					<center>
+					<input class="form-styling" type="email" name="email" placeholder="email" autofocus>
+					</center>
+					<br>
+					<label for="password">Password</label>
+					<center>
+					<input class="form-styling" type="password" name='password' placeholder="Password">
+					</center>
+					<center>
+					<li class=button><button class="btn-animate" type="submit" id="login-button">Entrar</button></li>
+					</center>
+					{% with messages = get_flashed_messages()%}
+                {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                            {{message}}
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            {% endwith %}
+			</div>
+			</form>
+
+
+		</div>
+
+	</div>
+</body>
+
+</html>

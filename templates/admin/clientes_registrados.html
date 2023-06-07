@@ -1,0 +1,282 @@
+{% extends "layout_admin.html" %}
+
+{% block librerias %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    body{
+        background-color: #eaeded;
+    }
+
+    .container{
+        margin-top: 10px;
+        background-color: white;
+        padding: 10px;
+    }
+   
+
+</style>
+
+{% endblock %}
+
+{% block container %}
+    
+
+
+    
+    
+    <div class="container card">
+        <h1>Lista de clientes</h1>
+
+        <div class="row">
+            
+            <div class="col">
+                
+                    <form action="" id="formBusqueda">
+                        <label for=""> Busqueda:</label>
+                        <input type="text" name="uBuscar" id="uBuscar" placeholder="Ejemplo..  Ariel">
+                        <!-- <a class="btn btn-dark buscar" href="">Buscar</a> -->
+                        <button class="btn btn-dark userBuscar" type="submit" >buscar</button> 
+                    </form>
+                
+                               
+            </div>
+            <div class="col col-2 bg-primary ">
+                
+                <div class="text-end text-light fs-4">
+                    {{eliminados}}
+                </div>
+                <div class="text-end text-light">
+                    Clientes Eliminados
+                </div>
+                
+                
+                
+            </div>
+            <div class="col col-2 bg-danger ">
+                
+                <div class="text-end text-light fs-4">
+                    {{total}}
+                </div>
+                <div class="text-end text-light">
+                    Clientes Registrados
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- dasdassd -->
+    <!-- dasdsad -->
+    
+    <div class="container lista">
+        <table class="table table-sm table-bordered table-hover ">
+            
+            <tr class="bg-success text-light">
+                <!-- El id no tiene que ser visible el rol y la contrasenia tampoco -->
+                <!-- <th>#ID </th> -->
+                <!-- <th>#ID ROL</th> -->
+                <th class="bg-primary">#Nombre</th>
+                <th>#Direccion</th>
+                <th>#Telefono</th>
+                <th>#Email</th>
+                <th>Compras</th>
+                <th></th>
+
+            </tr>
+            <tbody>
+            {% for persona in personas %}
+            <tr>
+                <!-- <td>{{persona[0]}}</td>
+                <td>{{persona[1]}}</td> -->
+                <td class="fw-bold">{{persona[2]}}</td>
+                <td>{{persona[3]}}</td>
+                <td>{{persona[4]}}</td>
+                <td>{{persona[5]}}</td>
+                <td>
+                    <button type="button" class="userinfo btn btn-primary" data-id='{{persona[0]}}' >
+                        Ver
+                      </button>
+                </td>
+                <td>
+                    <button type="button" class="userEliminar btn btn-danger" data-id="{{persona[0]}}"> x</button>
+                    <!-- <a href="/eliminar/{{persona[0]}}"><button class="btn btn-danger"  >x</button></a> -->
+                </td>
+                
+                </tr>
+                {% endfor %}
+            
+            </tbody>
+    </table>
+    </div>
+    
+    
+  
+  <!-- Modal -->
+  <div class="modal fade" id="empModal1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h4 class="modal-title"> </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> -->
+            <div class="modal-body">
+                
+                
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+  
+
+<div class="modal fade " id="empModal" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Productos Adquiridos</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade " id="empModal2" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Resultado de la busqueda</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+                $('.userinfo').click(function(){
+                    var userid = $(this).data('id');
+                    $.ajax({
+                        url: '/ajaxfile',
+                        type: 'post',
+                        data: {userid: userid},
+                        success: function(data){ 
+                           
+                            $('.modal-body').html(data);
+                            $('.modal-body').append(data.htmlresponse);
+                            $('#empModal').modal('show');
+
+                        }
+                    });
+                });
+
+                
+
+
+                $('.userEliminar').click(function(){
+                    var userid = $(this).data('id');
+                    $.ajax({
+                        url: '/ajaxElim',
+                        type: 'post',
+                        data: {userid: userid},
+                        success: function(data){ 
+                           
+                            $('.modal-body').html(data);
+                            $('.modal-body').append(data.htmlresponse);
+                            $('#empModal1').modal('show');
+
+                        }
+                    });
+                });
+                
+                // funcion para buscar
+                function ajaxBuscar(){
+                    $.ajax({
+                        url: '/ajaxBuscar',
+                        data: $('form').serialize(),
+                        type: 'POST',
+                        success: function(data){
+                            // console.log(data);
+                            $('.modal-body').html(data);
+                            $('.modal-body').append(data.htmlresponse);
+                            $('#empModal2').modal('show');
+
+
+                        },
+                        error: function(error){
+                            console.log(error);
+                        }
+                    });
+                };
+
+                $('#formBusqueda').submit(function(event){
+                    event.preventDefault();
+                    ajaxBuscar();
+                });
+
+
+                
+                // $('.userBuscar').click(function(){
+                //     var userid = $(this).data('id');
+                //     $.ajax({
+                //         url: '/ajaxBuscar',
+                //         type: 'post',
+                //         data: {userid: userid},
+                //         success: function(data){ 
+                           
+                //             $('.modal-body').html(data);
+                //             $('.modal-body').append(data.htmlresponse);
+                //             $('#empModal2').modal('show');
+
+                //         }
+                //     });
+                // });
+
+
+                $('.busqueda').hide();
+
+                // $('.buscar').click(function(){
+                //     $('.busqueda').show();
+                //     $('.lista').hide();
+                // });
+
+            });
+
+</script>
+
+{% endblock %}

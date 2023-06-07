@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <!--aqui esta las internas-->
+    <link rel="stylesheet" href="../static/css/index_admin.css">
+    
+    {% block librerias %}
+    
+    {% endblock %}
+    
+
+    
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/panel">MADJS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active a" aria-current="page" href="/modulo/clientes">LISTA DE CLIENTES</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link a" href="/modulo/productosIngresados">PRODUCTOS INGRESADOS</a>
+                
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link " href="/modulo/productosIngresados" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  PRODUCTOS INGRESADOS
+                </a> -->
+                <!-- <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul> -->
+              <!-- </li> -->
+              <li class="nav-item">
+                <a class="nav-link " href="/modulo/productosVendidos" tabindex="-1" aria-disabled="true">PRODUCTOS VENDIDOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/modulo/reservas" tabindex="-1" aria-disabled="true">RESERVAS PENDIENTES</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      
+
+    {% block container %}
+
+    {% endblock %}
+
+</body>
+</html>

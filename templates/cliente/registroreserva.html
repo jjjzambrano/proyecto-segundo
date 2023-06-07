@@ -1,0 +1,20 @@
+<center>
+                       <!-- aqui esta para madar a la base de datos -->
+                        <form class="negro" action="/reservar/{{id}}" method="POST">
+                        <label for="">Nombres:</label><br> 
+                        <input class="input form-control" type="text" id="txtNombre" name="txtNombre" placeholder="ingrese sus nombres " required value="{{nombre}}"><br>
+                        <label for="">Cedula:</label><br> 
+                        <input class="input form-control" type="number" id="txtCedula" name="txtCedula" placeholder="ingrese su cedula" required value="{{cedula}}"><br>
+                        <label for="">Cantidad de producto requerido:</label><br> 
+                        <input class="input form-control" type="number" id="txtCantidad" name="txtCantidad" placeholder="ingrese la cantidad" required MIN="1" value="{{cantidad}}"><br>
+                        <label for="">Correo:</label><br> 
+                        <input type="email" class="form-control" id="txtCorreo" name="txtCorreo"  value="{{correo}}" required placeholder="Ingrese su correo"><br>
+                        <label for="">fecha para reservar su entrega:</label><br> 
+                        <input class="input form-control" type="date" id="txtFecha" name="txtFecha" placeholder="Ingrese fecha para reservar" required value="{{fecha}}"><br>
+                        <br> 
+                        <div>
+                          <button type="submit" class="botons btn btn-success" >Reservar</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        </div>      
+                        </form>
+                    </center>

@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+    {% block estilos %}
+ <style> body {
+        background-color: #eaeded;
+    } 
+
+    .cuadroInferior{
+      padding: 40px
+    }
+   
+    </style>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% endblock %}
+    
+    
+
+{% block content %}
+<link rel="stylesheet" href="../../static/css/index_cliente.css">
+<br>
+<center>
+<h1 style = "font-family:courier,arial,helvética;">Bienvenido</h1>
+<h3 style = "font-family:Candara">Aqui encontraras variedad de Productos</h3>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i.blogs.es/a6a88d/1366_20001/1366_2000.jpg" class="d-block w-30" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.ippoecuador.com/wp-content/uploads/2019/12/ippo-ecuador-kimberly-clark-profesional-distrribuidor-mayorista-productos-de-limpieza-para-empresas-copia.jpg" class="d-block w-30" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://agriculturers.com/wp-content/uploads/2015/10/vegetales-verduras.jpg" class="d-block w-30" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.foodnewslatam.com/images/stories/2015/Junio/Bebidas-Alcoh%C3%B3licas.jpg" class="d-block w-30" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</center>
+
+<br>
+<div align="center">
+<a class="btn btn-success" href='/cliente/reservar/'> Ver mas </a>
+</div>
+<br>
+<head>
+        <br>
+        </div>
+<div class="container border border-secondary cuadroInferior">
+        <p>
+           MAD.JS proviene de las iniciales del nombre de cada integrante (Madeleine, Ariel, Dylan, Joshtyn y Steveen). Nos enfocamos en dar facilidad a nuestros usuarios al momento de comprar productos, la aplicación se centra en la recepción y reserva de productos con un enfoque más lógico, permitirá almacenar cada compra en una base de datos y también se visualizará que producto es el más reservado.
+            </b></p>
+        <head>
+        <br>
+ <head>
+
+              <br>
+              <div class="row">
+                  <div class="col"><iframe style="width: 400px;" height="250px"
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.814813167841!2d-78.45181588605377!3d-0.0759695999445665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d58f3454ada525%3A0x17a47532108ac5f1!2sPlan%20de%20Vivienda%20Ecuador%2C%20Quito%20170205!5e0!3m2!1ses!2sec!4v1610077220046!5m2!1ses!2sec"
+                          width="600" height="450" frameborder="12" style="border:12;" allowfullscreen=""
+                          aria-hidden="false" tabindex="0"></iframe></div>
+
+                  <div class="col">
+                      <ul></ul>
+                      <li> <img src="/static/images/direccion.png" style="width: 25px;" alt="direccion"> DIRECCIÓN: Av Simon
+                          Bolivar</li>
+                      <li><img src="/static/images/whatsapp.jpg" style="width: 25px;" alt="whatsapp"> WHATSAPP: 0962639779
+                      </li>
+                      <li> <img src="/static/images/gai.png" style="width:30px ;" alt="gmail">GMAIL: madjs@gmail.com</li>
+                      <li><img src="/static/images/face.png" style="width: 25px;" alt="facebook"> FACEBOOK: madjs</li>
+                      </ul>
+                  </div>
+                  <div class="col">
+
+                  </div>
+              </div>
+              </br>
+          </head>
+</div>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    {% endblock %}
